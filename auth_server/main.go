@@ -51,6 +51,7 @@ func ServeOnce(c *server.Config, cf string, hd *httpdown.HTTP) (*server.AuthServ
 	}
 
 	tlsConfig := &tls.Config{
+		MinVersion:               tls.VersionTLS12,
 		PreferServerCipherSuites: true,
 	}
 	if c.Server.CertFile != "" || c.Server.KeyFile != "" {
