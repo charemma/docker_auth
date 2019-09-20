@@ -53,6 +53,13 @@ func ServeOnce(c *server.Config, cf string, hd *httpdown.HTTP) (*server.AuthServ
 	tlsConfig := &tls.Config{
 		MinVersion:               tls.VersionTLS12,
 		PreferServerCipherSuites: true,
+		CipherSuites:		 []uint16{
+                        tls.TLS_RSA_WITH_AES_128_CBC_SHA,
+                        tls.TLS_RSA_WITH_AES_256_CBC_SHA,
+                        tls.TLS_RSA_WITH_AES_128_CBC_SHA256,
+                        tls.TLS_RSA_WITH_AES_128_GCM_SHA256,
+                        tls.TLS_RSA_WITH_AES_256_GCM_SHA384,
+		},
 	}
 	if c.Server.CertFile != "" || c.Server.KeyFile != "" {
 		// Check for partial configuration.
